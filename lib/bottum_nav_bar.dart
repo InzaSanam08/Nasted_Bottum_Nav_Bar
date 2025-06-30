@@ -16,9 +16,9 @@ class _BottumNavBarState extends State<BottumNavBar> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          BottomNavigationBarItem(icon: body[1]),
-          BottomNavigationBarItem(icon: body[2]),
-          BottomNavigationBarItem(icon: body[2]),
+          BottomNavigationBarItem(label: 'Home',icon: Icon(Icons.home)),
+          BottomNavigationBarItem(label: 'profile',icon: Icon(Icons.person)),
+          BottomNavigationBarItem(label: 'menu',icon: Icon(Icons.menu)),
         ],
       ),
     );
