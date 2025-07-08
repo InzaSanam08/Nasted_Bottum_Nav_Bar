@@ -1,25 +1,37 @@
+import 'package:btnbar/menu_navigator/Menu_navigator.dart';
+import 'package:btnbar/shop_navigator/shop_navigator.dart';
 import 'package:flutter/material.dart';
 
-class BottumNavBar extends StatefulWidget {
-  const BottumNavBar({super.key});
+class Bar extends StatefulWidget {
+  const Bar({super.key});
 
   @override
-  State<BottumNavBar> createState() => _BottumNavBarState();
+  State<Bar> createState() => _BarState();
 }
 
-class _BottumNavBarState extends State<BottumNavBar> {
-  var _currentIndex = 0;
-  List<Widget> body = [Icon(Icons.home), Icon(Icons.person), Icon(Icons.menu)];
+class _BarState extends State<Bar> {
+  int _selectedindex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(label: 'Home',icon: Icon(Icons.home)),
-          BottomNavigationBarItem(label: 'profile',icon: Icon(Icons.person)),
-          BottomNavigationBarItem(label: 'menu',icon: Icon(Icons.menu)),
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.shop), label: "shop"),
+          BottomNavigationBarItem(icon: Icon(Icons.menu), label: "menu"),
         ],
+        currentIndex: _selectedindex,
+        onTap: (value) {
+          _selectedindex = value;
+        },
+      ),
+
+      body: SafeArea(
+        top: false,
+        child: IndexedStack(
+          index: _selectedindex,
+          children: [Shop_Navigator(), Menu_Navigator()],
+        ),
       ),
     );
   }
